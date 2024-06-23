@@ -1,6 +1,4 @@
-import config from './config.js';
-
-const API_KEY = config.API_KEY;
+const API_KEY = 'sk-proj-1DCwokQHqIl0j5UShQbjT3BlbkFJRofNLNNNEWiHZk3CZr1i';
 const inputElement = document.querySelector('#name');
 const submitButton = document.getElementById('submit');
 
