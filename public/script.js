@@ -1,22 +1,55 @@
-document.body.style.margin   = 0
-document.body.style.overflow = `hidden`
+const API_KEY = config.API_KEY;
+const inputElement = document.querySelector('#name');
+const submitButton = document.getElementById('submit');
 
-const cnv = document.getElementById (`cnv_element`)
-cnv.width = innerWidth
-cnv.height = innerHeight
+// Request image when button is clicked
+async function getImages(prompt) {
+    const options = {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${API_KEY}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            "prompt": prompt,
+            "model": "dall-e-2",
+            "n": 1,
+            "quality": "hd",
+            "size": "512x512",
+        })
+    }
 
-const ctx = cnv.getContext (`2d`)
-
-const draw_frame = () => {
-   ctx.fillStyle = `turquoise`
-   ctx.fillRect (0, 0, innerWidth, innerHeight)
-
-   requestAnimationFrame (draw_frame)
+    try{
+        const response = await fetch('https://api.openai.com/v1/images/generations', options);
+        if (!response.ok) {
+            console.error("Response Error:", response.status, await response.text());
+            return;
+        }
+        const data = await response.json();
+        if (data?.data?.length) {
+            var imageObject = data.data[0];
+            var imgContainer = document.getElementById('imageContainer');
+            let img = imgContainer.querySelector('img'); // Try to find an existing img element
+            if (img) {
+                // If img exists, just update the src attribute
+                img.src = imageObject.url;
+            }
+            else {
+                // If no img exists, create a new one and append it
+                const img = document.createElement('img');
+                img.src = imageObject.url
+                imgContainer.appendChild(img);
+            }
+        }
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-draw_frame ()
+submitButton.addEventListener("click", () => getImages(inputElement.value));
 
-window.onresize = () => {
-   cnv.width = innerWidth
-   cnv.height = innerHeight   
-}
+document.getElementById('gallery').addEventListener('click', function() {
+    window.location.href = 'gallery.html'; // Redirects to the gallery page
+});
+
+localStorage.clear();

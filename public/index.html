@@ -1,9 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title> b l a n k </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lily's Image Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-   <canvas id="cnv_element"></canvas>
-   <script src="script.js"></script>
+    <div class="form__group field">
+        <input type="input" class="form__field" placeholder="name" name="name" id='name' required />
+        <label for="name" class="form__label">Describe the nature scene you want to draw</label>
+    </div>
+    <button class="button" id="submit">
+        Submit
+        <span></span><span></span><span></span><span></span>
+    </button>
+    <div id="imageContainer"></div>
+    <p>Save the image and send it to me to be featured in the Gallery</p>
+    <button class="button" id="gallery">
+        Gallery
+        <span></span><span></span><span></span><span></span>
+    </button>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
 </body>
+</html>
