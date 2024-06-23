@@ -1,4 +1,4 @@
-import config from './config.js';
+const config = require('./config.js');
 
 const API_KEY = config.API_KEY;
 const inputElement = document.querySelector('#name');
