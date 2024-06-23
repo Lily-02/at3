@@ -1,3 +1,5 @@
+import config from './config.js';
+
 const API_KEY = config.API_KEY;
 const inputElement = document.querySelector('#name');
 const submitButton = document.getElementById('submit');
@@ -49,6 +51,7 @@ async function getImages(prompt) {
 submitButton.addEventListener("click", () => getImages(inputElement.value));
 
 document.getElementById('gallery').addEventListener('click', function() {
+    console.log("1")
     window.location.href = 'gallery.html'; // Redirects to the gallery page
 });
 
