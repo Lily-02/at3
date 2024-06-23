@@ -1,0 +1,156 @@
+/*** Input field ***/
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  width: 50%;
+  z-index: 1; /* Ensure form stays above any full-screen elements */
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1.3rem;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown + .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.form__field:focus + .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #11998e;
+  font-weight: 700;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1;
+}
+
+/* reset input */
+.form__field:required, .form__field:invalid {
+  box-shadow: none;
+}
+
+/* demo */
+body {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.5rem;
+  background-color: #222222;
+  position: relative; /* Added to serve as a reference for absolute positioning */
+  margin: 0; 
+  padding: 0;
+}
+
+
+/*** Button ***/
+.button {
+    --c: #11998e;  /* Custom property for color */
+    position: relative;
+    color: #9b9b9b;
+    font-size: 16px;
+    border: 0.3em solid var(--c);
+    border-radius: 0.5em;
+    width: 12em;
+    height: 3em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;   
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 2.5em;
+    overflow: hidden;
+    background: none;
+    cursor: pointer;
+    transition: color 0.5s;
+}
+
+#gallery {
+    top: 20px;                 /* Space from the top */
+    right: 20px;               /* Space from the right */
+    position: fixed;
+}
+
+.button span {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: transform 0.5s, background-color 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+.button:hover {
+    color: black;
+}
+
+.button:hover span {
+    transform: translateY(0) scale(2);
+}
+
+.button span:nth-child(1) { --n: 1; }
+.button span:nth-child(2) { --n: 2; }
+.button span:nth-child(3) { --n: 3; }
+.button span:nth-child(4) { --n: 4; }
+
+/*** Image ***/
+#imageContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+  margin-bottom: 50px;
+}
+img {
+  width: 50%;               /* Ensures the image is responsive and scales with the width of its container */
+  max-height: 100%;
+  object-fit: contain;      /* Ensures the image is fully visible, shrinking if necessary */
+  height: auto;             /* Maintains the aspect ratio of the image */
+  display: block;           /* Removes any default inline spacing */
+  margin-top: 80px;         /* Adds vertical space and centers the image horizontally */
+  border-radius: 10px;      /* Optional: Rounds the corners of the image */
+}
+p {
+  color: white;
+}

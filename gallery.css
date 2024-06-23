@@ -1,0 +1,31 @@
+/* Gallery Container */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+    width: 100%; /* Adjust width as needed */
+    margin: auto;
+}
+
+/* Individual Images */
+.gallery-container img {
+    width: 100%; /* Makes each image fill its cell in the grid */
+    height: auto; /* Maintains the aspect ratio of the images */
+    border-radius: 10px; /* Optional: Adds rounded corners to your images */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Optional: Hover effect to slightly enlarge images */
+.gallery-container img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* If you need to ensure that the body has no margin and the gallery is full-width */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light grey background, change as needed */
+    font-family: 'Poppins', sans-serif; /* Consistent font with the main page */
+}
